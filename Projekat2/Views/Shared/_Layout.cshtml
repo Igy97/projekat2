@@ -6,6 +6,7 @@
     <title>Projekat2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    @RenderSection("Css", required: false)
 </head>
 <body>
     <header>
@@ -26,6 +27,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Customers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="CustomerCustomerDemoes" asp-action="Index">AddCustomersOrCustomersDemographics</a>
                         </li>
                     </ul>
                 </div>
