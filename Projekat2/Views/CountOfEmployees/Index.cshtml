@@ -4,48 +4,52 @@
     ViewData["Title"] = "View";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    <form asp-action="Filter">
+        <div class="form-group">
+            <label asp-for="@Model.RegionId" class="control-label"></label>
+            <select asp-for="@Model.RegionId" class="form-control" asp-items="ViewBag.RegionId"></select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Filter" class="btn btn-primary" style="width:100%" />
+        </div>
+    </form>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        <p>TerritoryDescription</p>
+                    </th>
+                    <th>
+                        <p>Count of Employees</p>
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.territoriesCountEmployee != null)
+                {
+                    @foreach (var item in Model.territoriesCountEmployee)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.territory.TerritoryDescription)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.countOfEmployees)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
 
-<form asp-action="Filter">
-    <div class="form-group">
-        <label asp-for="@Model.RegionId" class="control-label"></label>
-        <select asp-for="@Model.RegionId" class="form-control" asp-items="ViewBag.RegionId"></select>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Filter" class="btn btn-primary" style="width:100%" />
-    </div>
-</form>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <p>TerritoryDescription</p>
-            </th>
-            <th>
-                <p>Count of Employees</p>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
         @if (Model.territoriesCountEmployee != null)
         {
-            @foreach (var item in Model.territoriesCountEmployee)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.territory.TerritoryDescription)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.countOfEmployees)
-                    </td>
-                </tr>
-            }
+            <p style="text-align:right"><b>Sum of all employees for this region: @Model.sumOfEmployees</b></p>
         }
-    </tbody>
-</table>
 
-@if (Model.territoriesCountEmployee != null)
-{
-    <p style="text-align:right"><b>Sum of all employees for this region: @Model.sumOfEmployees</b></p>
-}
+    </div>
+
+</div>

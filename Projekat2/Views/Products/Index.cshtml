@@ -5,86 +5,77 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<form asp-action="Filter">
-    <div class="form-group">
-        <label asp-for="@Model.CategoryId" class="control-label"></label>
-        <select asp-for="@Model.CategoryId" class="form-control" asp-items="ViewBag.SupplierId"></select>
-    </div>
-    <div class="form-group">
-        <label asp-for="@Model.SupplierId" class="control-label"></label>
-        <select asp-for="@Model.SupplierId" class="form-control" asp-items="ViewBag.CategoryId"></select>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="Filter" class="btn btn-primary" style="width:100%"/>
-    </div>
-</form>
-   
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <p>ProductName</p>
-            </th>
-            <th>
-                <p>QuantityPerUnit</p>
-            </th>
-            <th>
-                <p>UnitPrice</p>
-            </th>
-            <th>
-                <p>UnitsInStock</p>
-            </th>
-            <th>
-                <p>UnitsOnOrder</p>
-            </th>
-            <th>
-                <p>ReorderLevel</p>
-            </th>
-            <th>
-                <p>Discontinued</p>
-            </th>
-            <th>
-                <p>Category</p>
-            </th>
-            <th>
-                <p>Supplier</p>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in @Model.productsList)
-        {
+<div class="container">
+    <form asp-action="Filter">
+        <div class="form-group">
+            <label asp-for="@Model.CategoryId" class="control-label"></label>
+            <select asp-for="@Model.CategoryId" class="form-control" asp-items="ViewBag.SupplierId"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.SupplierId" class="control-label"></label>
+            <select asp-for="@Model.SupplierId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Filter" class="btn btn-primary" style="width:100%" />
+        </div>
+    </form>
+</div>
+    
+<div class="table-responsive">
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProductName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.QuantityPerUnit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitPrice)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitsInStock)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitsOnOrder)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReorderLevel)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Discontinued)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
-                </td>
+                <th>
+                    <p>ProductName</p>
+                </th>
+                <th>
+                    <p>QuantityPerUnit</p>
+                </th>
+                <th>
+                    <p>UnitPrice</p>
+                </th>
+                <th>
+                    <p>UnitsInStock</p>
+                </th>
+                <th>
+                    <p>UnitsOnOrder</p>
+                </th>
+                <th>
+                    <p>ReorderLevel</p>
+                </th>
+                <th>
+                    <p>Discontinued</p>
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in @Model.productsList)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuantityPerUnit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitPrice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitsInStock)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UnitsOnOrder)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReorderLevel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Discontinued)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
