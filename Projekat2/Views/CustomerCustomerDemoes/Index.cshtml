@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Projekat2.Models.CustomerCustomerDemo>
+﻿@model IEnumerable<Projekat2.Models.customerCustomerDemographics>
 
 @{
     ViewData["Title"] = "Index";
@@ -16,10 +16,10 @@
             <thead>
                 <tr>
                     <th>
-                        @Html.DisplayNameFor(model => model.Customer)
+                        @Html.DisplayNameFor(model => model.ContactName)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.CustomerType)
+                        @Html.DisplayNameFor(model => model.CustomerDesc)
                     </th>
                     <th></th>
                 </tr>
@@ -29,10 +29,10 @@
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+                            @Html.DisplayFor(modelItem => item.ContactName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.CustomerType.CustomerTypeId)
+                            @Html.DisplayFor(modelItem => item.CustomerDesc)
                         </td>
                     </tr>
                 }

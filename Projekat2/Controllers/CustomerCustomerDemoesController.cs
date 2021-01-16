@@ -21,15 +21,32 @@ namespace Projekat2.Controllers
         // GET: CustomerCustomerDemoes
         public async Task<IActionResult> Index()
         {
-            var northwindContext = _context.CustomerCustomerDemo.Include(c => c.Customer).Include(c => c.CustomerType);
-            return View(await northwindContext.ToListAsync());
+
+            var customerDemoCustomer = from x in _context.CustomerCustomerDemo 
+                                       join customer in _context.Customers on x.CustomerId equals customer.CustomerId
+                                       join customerDemographics in _context.CustomerDemographics on x.CustomerTypeId equals customerDemographics.CustomerTypeId
+                                       select new { customer.ContactName, customerDemographics.CustomerDesc };
+
+            var listOfItems = await customerDemoCustomer.ToListAsync();
+
+            List<customerCustomerDemographics> list = new List<customerCustomerDemographics>();
+
+            foreach(var x in listOfItems)
+            {
+                customerCustomerDemographics customerCustomerDemographics = new customerCustomerDemographics();
+                customerCustomerDemographics.ContactName = x.ContactName;
+                customerCustomerDemographics.CustomerDesc = x.CustomerDesc;
+                list.Add(customerCustomerDemographics);
+            }
+
+            return View(list);
         }
  
         // GET: CustomerCustomerDemoes/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "CustomerId");
-            ViewData["CustomerTypeId"] = new SelectList(_context.CustomerDemographics, "CustomerTypeId", "CustomerTypeId");
+            ViewData["CustomerId"] = new SelectList(_context.Customers, "CustomerId", "ContactName");
+            ViewData["CustomerTypeId"] = new SelectList(_context.CustomerDemographics, "CustomerTypeId", "CustomerDesc");
             return View();
         }
 
