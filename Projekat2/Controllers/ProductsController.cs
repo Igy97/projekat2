@@ -22,8 +22,6 @@ namespace Projekat2.Controllers
         public async Task<IActionResult> Index()
         {
             FilterProducts filterProducts = new FilterProducts();
-            filterProducts.Categories = await _context.Categories.ToListAsync();
-            filterProducts.Suppliers = await _context.Suppliers.ToListAsync();
             filterProducts.productsList = await _context.Products.ToListAsync();
             var categories = await _context.Categories.ToListAsync();
             Categories category = new Categories();
@@ -37,6 +35,8 @@ namespace Projekat2.Controllers
             supplier.CompanyName = "Select Company";
             suppliers.Insert(0, supplier);
             ViewData["SupplierId"] = new SelectList(suppliers, "SupplierId", "CompanyName", "Select Supplier");
+            filterProducts.CategoryId = -1;
+            filterProducts.SupplierId = -1;
             return View(filterProducts);
         }
 
@@ -59,13 +59,13 @@ namespace Projekat2.Controllers
             category.CategoryId = -1;
             category.CategoryName = "Select Category";
             categories.Insert(0, category);
-            ViewData["CategoryId"] = new SelectList(categories, "CategoryId", "CategoryName", "Select Category");
+            ViewData["CategoryId"] = new SelectList(categories, "CategoryId", "CategoryName");
             var suppliers = await _context.Suppliers.ToListAsync();
             Suppliers supplier = new Suppliers();
             supplier.SupplierId = -1;
             supplier.CompanyName = "Select Company";
             suppliers.Insert(0, supplier);
-            ViewData["SupplierId"] = new SelectList(suppliers, "SupplierId", "CompanyName", "Select Supplier");
+            ViewData["SupplierId"] = new SelectList(suppliers, "SupplierId", "CompanyName");
             return View("~/Views/Products/Index.cshtml", filterProducts);
         }
 

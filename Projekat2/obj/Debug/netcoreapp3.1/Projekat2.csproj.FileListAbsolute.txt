@@ -459,3 +459,4 @@ E:\programi\dropbox\Dropbox\faks\master druga\c_taraba\projekat2\Projekat2\obj\D
 E:\programi\dropbox\Dropbox\faks\master druga\c_taraba\projekat2\Projekat2\obj\Debug\netcoreapp3.1\Razor\Views\Products\Details.cshtml.g.cs
 E:\programi\dropbox\Dropbox\faks\master druga\c_taraba\projekat2\Projekat2\obj\Debug\netcoreapp3.1\Razor\Views\Products\Edit.cshtml.g.cs
 E:\programi\dropbox\Dropbox\faks\master druga\c_taraba\projekat2\Projekat2\obj\Debug\netcoreapp3.1\Razor\Views\Products\Index.cshtml.g.cs
+E:\programi\dropbox\Dropbox\faks\master druga\c_taraba\projekat2\Projekat2\obj\Debug\netcoreapp3.1\Razor\Views\CountOfEmployees\Index.cshtml.g.cs
